@@ -1,11 +1,16 @@
+const { hash } = window.location;
+console.log(atob(hash.replace('#', '')));
 document.querySelector('form').addEventListener('submit', event => {
     event.preventDefault();
+
+    document.querySelector('#message-form').classList.add('hide');
+    document.querySelector('#link-form').classList.remove('hide');
 
     const input = document.querySelector('#message-input');
     const encrypted = btoa(input.value);
 
-    const linkinput = document.querySelector('#link-input');
-    linkinput.value = `${window.location}#${encrypted}`;
-    linkinput.select();
+    const linkInput = document.querySelector('#link-input');
+    linkInput.value = `${window.location}#${encrypted}`;
+    linkInput.select();
 });
 
